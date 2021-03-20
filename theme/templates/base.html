@@ -14,7 +14,14 @@
 		<link rel="stylesheet" href="{% static 'css/styles.css' %}">
 	</head>
 
-	<body>
+	<body class='relative pt-8'>
+		<nav class='p-4 bg-black bg-opacity-30 fixed top-0 left-0 w-full z-50'>
+			<a href="{% url 'music:home_page' %}">
+				<h2 class='text-white text-xl font-semibold'>
+					<span class='text-green-800 font-black'>Django</span>-Spotify-Clone
+				</h2>
+			</a>
+		</nav>
 
 		{% block content %}
 		
