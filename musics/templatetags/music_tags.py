@@ -5,7 +5,6 @@ register=template.Library()
 
 @register.filter
 def time_formater(time):
-    print(type(time))
     time=int(time)
     min=math.floor((time%3600)/60)
     sec=math.floor(time%60)

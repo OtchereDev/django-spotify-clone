@@ -1,12 +1,14 @@
 from musics.models import Album, Music
 from django.shortcuts import redirect, render
-from django.http import JsonResponse
+
 from .form import AddMusicForm
 
 def homePage(request):
-    musics=list(Music.objects.all().values())
+    musics=Music.objects.all()
+    musics_list=list(Music.objects.all().values())
     return render(request,'home.html',{
-        'musics':musics
+        'musics':musics,
+        "musics_list":musics_list
     })
 
 def addMusic(request):

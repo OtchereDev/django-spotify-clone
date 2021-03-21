@@ -82,7 +82,7 @@ Spotify: The world of better music
         <div class="text-xs text-gray-400">
           {{music.time_length | time_formater}}
         </div>
-        <a href="media/{{music.audio_file}}" class="focus:outline-none pr-4 group">
+        <a href="{{music.audio_file.url}}" class="focus:outline-none pr-4 group">
           <svg class="w-4 h-4 group-hover:text-green-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15v4c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2v-4M17 9l-5 5-5-5M12 12.8V2.5"/></svg>
         </a>
       </li>
@@ -100,7 +100,7 @@ Spotify: The world of better music
 <audio class="audio-player" preload="metadata" autoplay="false" src="/media/musics/2017-04-14_-_Happy_Dreams_-_David_Fesliyan.mp3"></audio>
 </div>
 
-{{musics|json_script:'musics'}}
+{{musics_list|json_script:'musics'}}
 <script>
   const player=document.querySelector('.audio-player')
   const play=document.querySelector('.playing')
@@ -235,13 +235,14 @@ audio_tracks.addEventListener('click',e=>{
     const newIndex=Array.from(audio_tracks.querySelectorAll('li')).indexOf(parent_cont)
     
     if (newIndex==musicIndex){
-      if(player.paused){
+      {% comment %} if(player.paused){
         
         player.play()
       }else{
         
         player.pause()
-      }
+      } {% endcomment %}
+      playOrPause()
     }else{
 
       musicIndex=newIndex
